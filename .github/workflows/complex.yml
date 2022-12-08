@@ -1,0 +1,41 @@
+name: Challenge1
+
+on: [push]
+
+jobs:
+  job1:
+    name: Show date on Ubuntu latest
+    runs-on: ubuntu-latest
+    steps:
+    - name: Initialization step
+    uses: actions/checkout@v2
+    - name: Run my commands step
+    run: date
+  
+  job2:
+    name: Show date on Windows latest 
+    runs-on: windows-latest
+    steps:
+    - name: Initialization step
+    uses: actions/checkout@v2
+    - name: Run my commands step
+    run: Get-Date
+  
+  job3:
+    name: Show date on MacOS latest 
+    runs-on: macos-latest
+    steps:
+    - name: Initialization step
+    uses: actions/checkout@v2
+    - name: Run my commands step
+    run: date 
+  
+  job4:
+    name: Show date on Ubuntu 18.04
+    needs: [job1,job2,job3]
+    runs-on: ubuntu-18.04
+    steps:
+    - name: Initialization step
+    uses: actions/checkout@v2
+    - name: Run my commands step
+    run: date 
